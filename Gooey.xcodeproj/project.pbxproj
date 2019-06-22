@@ -91,6 +91,7 @@
 		B55BB477202BA5A700B3C865 /* UIView+AccessibilitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AccessibilitySpec.swift"; sourceTree = "<group>"; };
 		B56F005D21F66BC600F29145 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		B56F005E21F66BC600F29145 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		EA3CEB6C22BEDD8B003214A6 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		EA4D772D22BC8FA1008CDB87 /* ConstraintRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintRepresentable.swift; sourceTree = "<group>"; };
 		EA93A48622BCA7100003CC04 /* ConstraintGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintGroupTests.swift; sourceTree = "<group>"; };
 		EADEAB9B22BCB1C20049308E /* NSLayoutConstraint+Targets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Targets.swift"; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 				B55BB458202BA1E200B3C865 /* GooeyTests */,
 				B55BB44C202BA1E200B3C865 /* Products */,
 				B56F005C21F66BC600F29145 /* Frameworks */,
+				EA3CEB6C22BEDD8B003214A6 /* Package.swift */,
 			);
 			sourceTree = "<group>";
 		};
