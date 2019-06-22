@@ -24,22 +24,25 @@ public protocol BoundingLayoutAnchorTarget {
     var trailingAnchor: NSLayoutXAxisAnchor { get }
 }
 
-/// The `BoundingLayoutAnchor` type is a factory decorator for creating grouped `NSLayoutConstraint`
-/// objects using a fluent interface (an interface designed to produce more readable code). Use
-/// these constraints to programatically define your layout using Auto Layout.
-public struct BoundingLayoutAnchor {
+/// The `BoundingLayoutAnchor` type is a factory decorator for creating grouped
+/// `NSLayoutConstraint` objects using a fluent interface (an interface
+/// designed to produce more readable code). Use these constraints to
+/// programatically define your layout using Auto Layout.
+public struct BoundingLayoutAnchor<T> where T: BoundingLayoutAnchorTarget {
 
-    private let target: BoundingLayoutAnchorTarget
+    fileprivate let target: T
 
-    init(targeting target: BoundingLayoutAnchorTarget) {
+    init(targeting target: T) {
         self.target = target
     }
 
-    /// Constrains the top and bottom bound anchors to the reference view using the given insets.
+    /// Constrains the top and bottom bound anchors to the reference view using
+    /// the given insets.
     ///
     /// - Parameters:
     ///   - view: The view to which the bound anchors are constrained.
-    ///   - insets: The amount of interior space between the argument bound anchors.
+    ///   - insets: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeVerticalEdges(equalTo view: UIView, insets: EdgeInsets<VerticalAxis> = .zero) -> ConstraintGroup<VerticalAxis> {
         return ConstraintGroup(constraints: [
             target.topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
@@ -47,11 +50,14 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains the top and bottom bound anchors to the reference layout guide using the given insets.
+    /// Constrains the top and bottom bound anchors to the reference layout
+    /// guide using the given insets.
     ///
     /// - Parameters:
-    ///   - view: The view to which the bound anchors are constrained.
-    ///   - insets: The amount of interior space between the argument bound anchors.
+    ///   - layoutGuide: The layout guide to which the bound anchors are
+    ///         constrained.
+    ///   - insets: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeVerticalEdges(equalTo layoutGuide: UILayoutGuide, insets: EdgeInsets<VerticalAxis> = .zero) -> ConstraintGroup<VerticalAxis> {
         return ConstraintGroup(constraints: [
             target.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: insets.top),
@@ -59,11 +65,13 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains the left and right bound anchors to the reference view using the given insets.
+    /// Constrains the left and right bound anchors to the reference view using
+    /// the given insets.
     ///
     /// - Parameters:
     ///   - view: The view to which the bound anchors are constrained.
-    ///   - insets: The amount of interior space between the argument bound anchors.
+    ///   - insets: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeHorizontalEdges(equalTo view: UIView, insets: EdgeInsets<HorizontalAxis> = .zero) -> ConstraintGroup<HorizontalAxis> {
         return ConstraintGroup(constraints: [
             target.leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left),
@@ -71,11 +79,14 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains the left and right bound anchors to the reference layout guide using the given insets.
+    /// Constrains the left and right bound anchors to the reference layout
+    /// guide using the given insets.
     ///
     /// - Parameters:
-    ///   - view: The view to which the bound anchors are constrained.
-    ///   - insets: The amount of interior space between the argument bound anchors.
+    ///   - layoutGuide: The layout guide to which the bound anchors are
+    ///         constrained.
+    ///   - insets: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeHorizontalEdges(equalTo layoutGuide: UILayoutGuide, insets: EdgeInsets<HorizontalAxis> = .zero) -> ConstraintGroup<HorizontalAxis> {
         return ConstraintGroup(constraints: [
             target.leftAnchor.constraint(equalTo: layoutGuide.leftAnchor, constant: insets.left),
@@ -83,11 +94,13 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains the leading and trailing bound anchors to the reference view using the given insets.
+    /// Constrains the leading and trailing bound anchors to the reference view
+    /// using the given insets.
     ///
     /// - Parameters:
     ///   - view: The view to which the bound anchors are constrained.
-    ///   - inset: The amount of interior space between the argument bound anchors.
+    ///   - inset: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeRelativeHorizontalEdges(equalTo view: UIView, insets: EdgeInsets<HorizontalAxis> = .zero) -> ConstraintGroup<HorizontalAxis> {
         return ConstraintGroup(constraints: [
             target.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left),
@@ -95,11 +108,14 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains the leading and trailing bound anchors to the reference layout guide using the given insets.
+    /// Constrains the leading and trailing bound anchors to the reference
+    /// layout guide using the given insets.
     ///
     /// - Parameters:
-    ///   - view: The view to which the bound anchors are constrained.
-    ///   - inset: The amount of interior space between the argument bound anchors.
+    ///   - layoutGuide: The layout guide to which the bound anchors are
+    ///         constrained.
+    ///   - inset: The amount of interior space between the argument bound
+    ///         anchors.
     public func makeRelativeHorizontalEdges(equalTo layoutGuide: UILayoutGuide, insets: EdgeInsets<HorizontalAxis> = .zero) -> ConstraintGroup<HorizontalAxis> {
         return ConstraintGroup(constraints: [
             target.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: insets.left),
@@ -107,7 +123,8 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains all bound anchors to the reference view using the given insets.
+    /// Constrains all bound anchors to the reference view using the given
+    /// insets.
     ///
     /// - Parameters:
     ///   - view: The view to which the position anchors are constrained.
@@ -121,10 +138,12 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains all bound anchors to the reference layout guide using the given insets.
+    /// Constrains all bound anchors to the reference layout guide using the
+    /// given insets.
     ///
     /// - Parameters:
-    ///   - view: The view to which the position anchors are constrained.
+    ///   - layoutGuide: The layout guide to which the position anchors are
+    ///         constrained.
     ///   - insets: The surrounding insets applied to the receiving view.
     public func makeEdges(equalTo layoutGuide: UILayoutGuide, insets: EdgeInsets<Bounds> = .zero) -> ConstraintGroup<Bounds> {
         return ConstraintGroup(constraints: [
@@ -135,7 +154,8 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains all bound anchors to the reference view's relative anchors using the given insets.
+    /// Constrains all bound anchors to the reference view's relative anchors
+    /// using the given insets.
     ///
     /// - Parameters:
     ///   - view: The view to which the position anchors are constrained.
@@ -149,10 +169,12 @@ public struct BoundingLayoutAnchor {
         ], insets: insets)
     }
 
-    /// Constrains all bound anchors to the reference view's relative anchors using the given insets.
+    /// Constrains all bound anchors to the reference view's relative anchors
+    /// using the given insets.
     ///
     /// - Parameters:
-    ///   - view: The view to which the position anchors are constrained.
+    ///   - layoutGuide: The layout guide to which the position anchors are
+    ///         constrained.
     ///   - insets: The surrounding insets applied to the receiving view.
     public func makeRelativeEdges(equalTo layoutGuide: UILayoutGuide, insets: EdgeInsets<Bounds> = .zero) -> ConstraintGroup<Bounds> {
         return ConstraintGroup(constraints: [
@@ -161,6 +183,58 @@ public struct BoundingLayoutAnchor {
             target.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -insets.bottom),
             target.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -insets.right)
         ], insets: insets)
+    }
+
+}
+
+extension BoundingLayoutAnchor where T: UIView {
+
+    /// Constrains the top and bottom bound anchors to the superview using the
+    /// given insets.
+    ///
+    /// - Parameters:
+    ///   - insets: The amount of interior space between the argument bound
+    ///         anchors.
+    public func makeVerticalEdgesEqualToSuperview(insets: EdgeInsets<VerticalAxis> = .zero) -> ConstraintGroup<VerticalAxis> {
+        return makeVerticalEdges(equalTo: target.superview!, insets: insets)
+    }
+
+    /// Constrains the top and bottom bound anchors to the superview's safe area
+    ///  using the given insets.
+    ///
+    /// - Parameters:
+    ///   - insets: The amount of interior space between the argument bound
+    ///   anchors.
+    public func makeVerticalEdgesEqualToSuperview(insets: EdgeInsets<VerticalAxis> = .zero) -> ConstraintGroup<VerticalAxis> {
+        return makeVerticalEdges(equalTo: target.superview!, insets: insets)
+    }
+
+    /// Constrains the left and right bound anchors to the superview view using
+    /// the given insets.
+    ///
+    /// - Parameters:
+    ///   - insets: The amount of interior space between the argument bound
+    ///   anchors.
+    public func makeHorizontalEdgesEqualToSuperview(insets: EdgeInsets<HorizontalAxis> = .zero) -> ConstraintGroup<HorizontalAxis> {
+        return makeHorizontalEdges(equalTo: target.superview!, insets: insets)
+    }
+
+    /// Constrains all bound anchors to the superview view using the given
+    /// insets.
+    ///
+    /// - Parameters:
+    ///   - insets: The surrounding insets applied to the receiving view.
+    public func makeEdgesEqualToSuperview(insets: EdgeInsets<Bounds> = .zero) -> ConstraintGroup<Bounds> {
+        return makeEdges(equalTo: target.superview!, insets: insets)
+    }
+
+    /// Constrains all bound anchors to the superview view's relative anchors
+    /// using the given insets.
+    ///
+    /// - Parameters:
+    ///   - insets: The surrounding insets applied to the receiving view.
+    public func makeRelativeEdgesEqualToSuperview(insets: EdgeInsets<Bounds> = .zero) -> ConstraintGroup<Bounds> {
+        return makeRelativeEdges(equalTo: target.superview!, insets: insets)
     }
 
 }
