@@ -1,4 +1,5 @@
 // swift-tools-version:5.1
+import PackageDescription
 
 let package = Package(
     name: "Gooey",
@@ -6,11 +7,7 @@ let package = Package(
         .library(name: "Gooey", targets: ["Gooey"]),
     ],
     targets: [
-        .target(
-            name: "Gooey",
-            dependencies: []),
-        .testTarget(
-            name: "GooeyTests",
-            dependencies: ["Gooey"]),
+        .target(name: "Gooey", dependencies: []),
+        .testTarget(name: "GooeyTests", dependencies: ["Gooey"]),
     ]
 )
