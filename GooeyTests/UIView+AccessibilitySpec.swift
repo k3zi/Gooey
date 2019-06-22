@@ -2,6 +2,7 @@ import Foundation
 import Gooey
 import Nimble
 import Quick
+import UIKit
 
 class UIAccessibilityElementExtensionsSpec: QuickSpec {
 
