@@ -5,7 +5,7 @@ extension UILayoutGuide: BoundingLayoutAnchorTarget { }
 
 extension GooeyNamespace where Base: UILayoutGuide {
     
-    var boundingAnchor: BoundingLayoutAnchor {
+    var boundingAnchor: BoundingLayoutAnchor<UILayoutGuide> {
         return BoundingLayoutAnchor(targeting: base)
     }
     

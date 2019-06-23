@@ -10,7 +10,7 @@ public extension GooeyNamespace where Base: UIView {
     /// Use this anchor to create multiple homomorphous constraints between a view and its target. The
     /// the result of these operations create contexts for easily applying symmetric changes across the
     /// emitted constraints.
-    var boundingAnchor: BoundingLayoutAnchor {
+    var boundingAnchor: BoundingLayoutAnchor<UIView> {
         return BoundingLayoutAnchor(targeting: base)
     }
 
