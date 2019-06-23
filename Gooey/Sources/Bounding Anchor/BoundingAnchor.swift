@@ -199,16 +199,6 @@ extension BoundingLayoutAnchor where T: UIView {
         return makeVerticalEdges(equalTo: target.superview!, insets: insets)
     }
 
-    /// Constrains the top and bottom bound anchors to the superview's safe area
-    ///  using the given insets.
-    ///
-    /// - Parameters:
-    ///   - insets: The amount of interior space between the argument bound
-    ///   anchors.
-    public func makeVerticalEdgesEqualToSuperview(insets: EdgeInsets<VerticalAxis> = .zero) -> ConstraintGroup<VerticalAxis> {
-        return makeVerticalEdges(equalTo: target.superview!, insets: insets)
-    }
-
     /// Constrains the left and right bound anchors to the superview view using
     /// the given insets.
     ///
